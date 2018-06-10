@@ -1,32 +1,28 @@
 package com.dev.shadi;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 
-public class MainActivity extends AppCompatActivity {
+public class RateActivity extends AppCompatActivity {
     InterstitialAd mInterstitialAd;
     private InterstitialAd interstitial;
-    Button btnbegin;
+    Button btn1,btn2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_rate);
         //Admob
         AdRequest adRequest = new AdRequest.Builder().build();
-
         // Prepare the Interstitial Ad
-        interstitial = new InterstitialAd(MainActivity.this);
+        interstitial = new InterstitialAd(RateActivity.this);
         interstitial.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
         interstitial.loadAd(adRequest);
         interstitial.setAdListener(new AdListener() {
@@ -34,30 +30,22 @@ public class MainActivity extends AppCompatActivity {
                 displayInterstitial();
             }
         });
-        btnbegin = findViewById(R.id.beginBtn);
-        btnbegin.setOnClickListener(new View.OnClickListener() {
+        btn1 = findViewById(R.id.btn1);
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-            if(isNetworkAvailable())
-            {
-                Intent i = new Intent(getBaseContext(), AppUsedActivity.class);
+            }
+        });
+        btn2 = findViewById(R.id.btn2);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getBaseContext(), CountryActivity.class);
                 startActivity(i);
-            }
-            else
-            {
-                Toast.makeText(getApplicationContext(),"المرجو ربط الاتصال بالانترنت !",Toast.LENGTH_LONG).show();
-            }
             }
         });
     }
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
-
     public void displayInterstitial() {
         if (interstitial.isLoaded()) {
             interstitial.show();
