@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
 public class SuccesActivity extends AppCompatActivity {
@@ -28,6 +29,8 @@ public class SuccesActivity extends AppCompatActivity {
         //Admob
         AdRequest adRequest = new AdRequest.Builder().build();
         // Prepare the Interstitial Ad
+        AdView mAdView = findViewById(R.id.ad_view);
+        mAdView.loadAd(adRequest);
         interstitial = new InterstitialAd(SuccesActivity.this);
         interstitial.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
         interstitial.loadAd(adRequest);

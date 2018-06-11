@@ -8,6 +8,21 @@ android:layout_gravity="center_vertical"
 android:gravity="center"
 android:orientation="vertical"
 tools:context=".PhoneActivity">
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/ad_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        app:adSize="BANNER"
+        app:adUnitId="@string/banner_ad_unit_id" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        android:padding="10dp"
+        >
 
 
     <pl.droidsonroids.gif.GifTextView
@@ -60,5 +75,5 @@ tools:context=".PhoneActivity">
 
 
 
-
+</LinearLayout>
 </LinearLayout>

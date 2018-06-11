@@ -16,6 +16,7 @@ import android.widget.Spinner;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.hbb20.CountryCodePicker;
 
@@ -37,6 +38,8 @@ public class CountryActivity extends AppCompatActivity {
         //Admob
         AdRequest adRequest = new AdRequest.Builder().build();
         // Prepare the Interstitial Ad
+        AdView mAdView = findViewById(R.id.ad_view);
+        mAdView.loadAd(adRequest);
         interstitial = new InterstitialAd(CountryActivity.this);
         interstitial.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
         sp1 = (CountryCodePicker) findViewById(R.id.sp1);

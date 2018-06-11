@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
 public class PhoneActivity extends AppCompatActivity {
@@ -26,6 +27,8 @@ public class PhoneActivity extends AppCompatActivity {
         //Admob
         AdRequest adRequest = new AdRequest.Builder().build();
         // Prepare the Interstitial Ad
+        AdView mAdView = findViewById(R.id.ad_view);
+        mAdView.loadAd(adRequest);
         interstitial = new InterstitialAd(PhoneActivity.this);
         interstitial.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
         interstitial.loadAd(adRequest);
@@ -44,11 +47,20 @@ public class PhoneActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     try {
-                        Intent i = new Intent(getBaseContext(), ConfirmationActivity.class);
-                        i.putExtra("countrycode1",c);
-                        i.putExtra("countryname1",cn);
-                        i.putExtra("phonenumber1",edt1.getText().toString());
-                        startActivity(i);
+
+                        if(edt1.getText().toString().matches(""))
+                        {
+                            Toast.makeText(getApplicationContext(),"المرجو إدخال رقم الهاتف",Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            Intent i = new Intent(getBaseContext(), ConfirmationActivity.class);
+                            i.putExtra("countrycode1",c);
+                            i.putExtra("countryname1",cn);
+                            i.putExtra("phonenumber1",edt1.getText().toString());
+                            startActivity(i);
+                        }
+
                     } catch (Exception e) {
                         Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
                     }

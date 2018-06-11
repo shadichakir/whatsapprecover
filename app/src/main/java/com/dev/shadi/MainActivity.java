@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
                     if(isNetworkAvailable())
                     {
-                        //  Intent i = new Intent(getBaseContext(), AppUsedActivity.class);
-                        // startActivity(i);
+                          Intent i = new Intent(getBaseContext(), AppUsedActivity.class);
+                         startActivity(i);
                     }
                     else
                     {

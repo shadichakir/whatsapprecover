@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
 public class AppUsedActivity extends AppCompatActivity {
@@ -15,12 +16,16 @@ public class AppUsedActivity extends AppCompatActivity {
     private InterstitialAd interstitial;
     Button btn1,btn2;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_used);
         //Admob
         AdRequest adRequest = new AdRequest.Builder().build();
+        AdView mAdView = findViewById(R.id.ad_view);
+        mAdView.loadAd(adRequest);
+
         // Prepare the Interstitial Ad
         interstitial = new InterstitialAd(AppUsedActivity.this);
         interstitial.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
