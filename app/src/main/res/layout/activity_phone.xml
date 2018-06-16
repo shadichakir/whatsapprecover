@@ -30,6 +30,12 @@
         android:layout_gravity="center_vertical|center"
         android:scaleType="fitXY"
         android:src="@drawable/phone" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+
+            android:text="المرجو إدخال رقم الهاتف"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

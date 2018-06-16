@@ -7,7 +7,7 @@
     android:layout_gravity="center_vertical"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".PhoneActivity">
+    tools:context=".ConfirmationActivity">
     <com.google.android.gms.ads.AdView
         android:id="@+id/ad_view"
         android:layout_width="match_parent"
